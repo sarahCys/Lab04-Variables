@@ -1,0 +1,57 @@
+?- house = house.
+true.
+% Both terms are the same atom, so they can be unified.
+
+ ?- house = abc.
+false.
+% House cannot be unified with abc because they are different atoms.
+
+
+ ?- edge(a,b) = edge(C,b).
+C = a.
+% The terms can be combined under the single term, C = a.
+
+
+ ?- edge(a,d) = edge(C,B).
+C = a,
+B = d.
+% The terms can be unified by assigning C = a and B = d.
+
+ ?- edge(C,B) = edge(a,d).
+C = a,
+B = d.
+% The terms can be combined by making a = C and d = B.
+
+
+ ?- edge(A,f(g,h)) = edge(a,B).
+A = a,
+B = f(g, h).
+% The terms can be unified by assigning A = a and B = f(g,h).
+
+
+ ?- edge(A,A) = edge(b,c).
+false.
+% Terms can not be combined since A would have to be both b and c.
+
+
+ ?- edge(A,A) = edge(b,b).
+A = b.
+% The terms can be combined as A may be equal to b on both occasions.
+
+
+ ?- A = B, B = f.
+A = B, B = f.
+% A and B can be unified, and both are assigned to f.
+
+
+ ?- A = B, B = f, A = e.
+false.
+% The terms can not be combined since A would have to be both f and e.
+
+
+
+
+
+
+
+
